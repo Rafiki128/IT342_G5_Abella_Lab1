@@ -1,7 +1,7 @@
 package com.Abella.UserAuth.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+
 @Entity
 @Table(name = "users")
 
