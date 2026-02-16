@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from './api';
+import "./Auth.css";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -21,16 +23,43 @@ function Register() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Create Account</h2>
-            <input name="userid" placeholder="User ID (PK)" onChange={handleInput} required />
-            <input name="fname" placeholder="First Name" onChange={handleInput} />
-            <input name="lname" placeholder="Last Name" onChange={handleInput} />
-            <input name="username" placeholder="Username" onChange={handleInput} required />
-            <input name="email" type="email" placeholder="Email" onChange={handleInput} />
-            <input name="password" type="password" placeholder="Password" onChange={handleInput} required />
-            <button type="submit">Register</button>
-        </form>
+        <div className="auth-container">
+            <div className="auth-card wide-card">
+                <h2>Create Account</h2>
+                <p className="auth-subtitle">Register now!</p>
+                
+                <form className="auth-form grid-form" onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <label>User ID</label>
+                        <input name="userid" placeholder="ID123" onChange={handleInput} required />
+                    </div>
+                    <div className="input-group">
+                        <label>Email</label>
+                        <input name="email" type="email" placeholder="name@company.com" onChange={handleInput} />
+                    </div>
+                    <div className="input-group">
+                        <label>First Name</label>
+                        <input name="fname" placeholder="Jane" onChange={handleInput} />
+                    </div>
+                    <div className="input-group">
+                        <label>Last Name</label>
+                        <input name="lname" placeholder="Doe" onChange={handleInput} />
+                    </div>
+                    <div className="input-group">
+                        <label>Username</label>
+                        <input name="username" placeholder="janedoe" onChange={handleInput} required />
+                    </div>
+                    <div className="input-group">
+                        <label>Password</label>
+                        <input name="password" type="password" placeholder="••••••••" onChange={handleInput} required />
+                    </div>
+                    <button type="submit" className="btn-main full-width grid-span-2">Register</button>
+                </form>
+                <p className="auth-footer">
+                    Already have an account? <Link to="/login">Sign in</Link>
+                </p>
+            </div>
+        </div>
     );
 }
 export default Register;
