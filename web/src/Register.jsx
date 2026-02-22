@@ -5,7 +5,7 @@ import "./Auth.css";
 
 function Register() {
     const [formData, setFormData] = useState({
-        userid: '', fname: '', lname: '', username: '', email: '', password: ''
+        fname: '', lname: '', username: '', email: '', password: ''
     });
 
     const handleInput = (e) => {
@@ -18,7 +18,7 @@ function Register() {
             await api.post('/auth/register', formData);
             alert("Registered successfully!");
         } catch (err) {
-            alert("Registration failed. Check if User ID or Username is taken.");
+            alert("Registration failed. Check if Username or Email is already taken.");
         }
     };
 
@@ -26,17 +26,9 @@ function Register() {
         <div className="auth-container">
             <div className="auth-card wide-card">
                 <h2>Create Account</h2>
-                <p className="auth-subtitle">Register now!</p>
+                <p className="auth-subtitle">Join us today!</p>
                 
                 <form className="auth-form grid-form" onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label>User ID</label>
-                        <input name="userid" placeholder="ID123" onChange={handleInput} required />
-                    </div>
-                    <div className="input-group">
-                        <label>Email</label>
-                        <input name="email" type="email" placeholder="name@company.com" onChange={handleInput} />
-                    </div>
                     <div className="input-group">
                         <label>First Name</label>
                         <input name="fname" placeholder="Jane" onChange={handleInput} />
@@ -46,10 +38,14 @@ function Register() {
                         <input name="lname" placeholder="Doe" onChange={handleInput} />
                     </div>
                     <div className="input-group">
+                        <label>Email</label>
+                        <input name="email" type="email" placeholder="name@company.com" onChange={handleInput} required />
+                    </div>
+                    <div className="input-group">
                         <label>Username</label>
                         <input name="username" placeholder="janedoe" onChange={handleInput} required />
                     </div>
-                    <div className="input-group">
+                    <div className="input-group grid-span-2">
                         <label>Password</label>
                         <input name="password" type="password" placeholder="••••••••" onChange={handleInput} required />
                     </div>
