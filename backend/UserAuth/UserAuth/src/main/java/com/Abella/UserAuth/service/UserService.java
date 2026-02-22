@@ -17,25 +17,19 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    // Logic for registering a new user
     public User registerUser(User user) {
-        // 1. Encrypt the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // 2. Set default status
         user.setStatus("ACTIVE");
 
-        // 3. Save to database
         return userRepository.save(user);
     }
 
-    // Logic for finding a user by username (used for login and profile)
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    // Logic for finding a user by ID
-    public Optional<User> findById(String userid) {
+    public Optional<User> findById(Long userid) {
         return userRepository.findById(userid);
     }
 }
